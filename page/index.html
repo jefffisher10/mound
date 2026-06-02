@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="refresh" content="1800">
+  <title>MOUND — Live Data | yesteryear forever</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../script.js" defer></script>
+</head>
+<body>
+
+  <nav id="topnav">
+    <div id="topnav-inner">
+      <a href="../ABOUT.html">| about |</a>
+      <span class="nav-sep">·</span>
+      <a href="../making.html">| making |</a>
+      <span class="nav-sep">·</span>
+      <a href="../writing.html">| writing |</a>
+      <span class="nav-sep">·</span>
+      <a href="../sensing.html">| sensing |</a>
+      <span class="nav-sep">·</span>
+      <button id="toggle-dark-mode">| dark mode |</button>
+      <span class="nav-sep">·</span>
+      <button onclick="goRandom()">| random |</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1><a href="../index.html">| yesteryear forever |</a></h1>
+
+    <blockquote>
+
+      <p><strong>MOUND — Live Sensor Data</strong></p>
+
+      <p>West Mound St., Columbus, Ohio &nbsp;·&nbsp; updated every 30 minutes<br>
+      <a href="../sensing.html">? about this project</a></p>
+
+      <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
+
+      <p>
+        <strong>Last reading:</strong> 2026-06-01 20:00:03<br><br>
+        ?? &nbsp;Air Temperature &nbsp;&nbsp;&nbsp;&nbsp; 73.4°F<br>
+        ?? &nbsp;Humidity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 33.4%<br>
+        ?? &nbsp;Pressure &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 990.7 hPa<br>
+        ?? &nbsp;Light &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2324 lux<br>
+        ?? &nbsp;Soil Temperature &nbsp; 74.1°F<br>
+        ?? &nbsp;Soil Moisture &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Moderate<br>
+        ?? &nbsp;Rain &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No<br>
+      </p>
+
+      <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
+
+      <p><strong>Today — 2026-06-01</strong></p>
+
+      <figure>
+        <img src="graphs/today.png"
+             alt="Today's sensor readings"
+             style="width:100%; max-width:900px; display:block; margin: 0.5rem auto;">
+        <figcaption>Six sensor channels — updated every 30 minutes</figcaption>
+      </figure>
+
+      <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
+
+      <p><strong>Last 7 Days</strong></p>
+
+      <figure>
+        <img src="graphs/7day.png"
+             alt="Last 7 days of sensor readings"
+             style="width:100%; max-width:900px; display:block; margin: 0.5rem auto;">
+        <figcaption>Rolling 7-day view — updated nightly</figcaption>
+      </figure>
+
+      <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
+
+      <p><strong>Daily Archive</strong></p>
+      <ul style="list-style:none; padding:0;">
+<li>No archive yet.</li>
+      </ul>
+
+    </blockquote>
+
+    <p style="font-size: 0.85rem; color: #999;">2026-06-01 · auto-generated</p>
+
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+</body>
+</html>
