@@ -1,0 +1,6 @@
+2026-06-02 12:30:03, ERROR TSL2591: Overflow reading light channels!, Try to reduce the gain of
+ the sensor using adafruit_tsl2591.GAIN_LOW
+2026-06-02 13:00:03, ERROR TSL2591: Overflow reading light channels!, Try to reduce the gain of
+ the sensor using adafruit_tsl2591.GAIN_LOW
+2026-06-02 13:30:03, ERROR TSL2591: Overflow reading light channels!, Try to reduce the gain of
+ the sensor using adafruit_tsl2591.GAIN_LOW

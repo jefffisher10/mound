@@ -24,19 +24,60 @@ updated = 'N/A'
 
 if latest:
     try:
-        parts = latest.split(', ')
-        updated = parts[0]
-        temp         = f"{float(parts[1]):.1f}°F"
-        humidity     = f"{float(parts[2]):.1f}%"
-        pressure     = f"{float(parts[3]):.1f} hPa"
-        lux_val      = float(parts[4])
-        lux          = f"{max(0, lux_val):.0f} lux"
-        soil_temp    = f"{float(parts[5]):.1f}°F"
-        soil_moisture_raw = int(float(parts[6]))
-        rain_val     = int(float(parts[7]))
-        rain         = "Yes ??" if rain_val == 1 else "No"
-        voltage      = f"{float(parts[8]):.2f}V"
-        current      = f"{float(parts[9]):.0f} mA"
+        try:
+    		temp = f"{float(parts[1]):.1f}°F"
+	except:
+    		temp = 'N/A'
+
+	try:
+    		humidity = f"{float(parts[2]):.1f}%"
+	except:
+    		humidity = 'N/A'
+
+	try:
+    		pressure = f"{float(parts[3]):.1f} hPa"
+	except:
+    		pressure = 'N/A'
+
+	try:
+    		lux_val = float(parts[4])
+    		lux = f"{max(0, lux_val):.0f} lux"
+	except:
+    		lux = 'Overload'
+
+	try:
+    		soil_temp = f"{float(parts[5]):.1f}°F"
+	except:
+    		soil_temp = 'N/A'
+
+try:
+    soil_moisture_raw = int(float(parts[6]))
+    if soil_moisture_raw < 13000:
+        soil_moisture = "Saturated"
+    elif soil_moisture_raw < 15000:
+        soil_moisture = "Moist"
+    elif soil_moisture_raw < 17000:
+        soil_moisture = "Moderate"
+    else:
+        soil_moisture = "Dry"
+except:
+    soil_moisture = 'N/A'
+
+try:
+    rain_val = int(float(parts[7]))
+    rain = "Yes 🌧" if rain_val == 1 else "No"
+except:
+    rain = 'N/A'
+
+try:
+    voltage = f"{float(parts[8]):.2f}V"
+except:
+    voltage = 'N/A'
+
+try:
+    current = f"{float(parts[9]):.0f} mA"
+except:
+    current = 'N/A'
 
         # Soil moisture as descriptive
         if soil_moisture_raw < 13000:

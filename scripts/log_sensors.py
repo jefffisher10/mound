@@ -37,7 +37,11 @@ try:
     tsl = adafruit_tsl2591.TSL2591(i2c)
     tsl.gain = adafruit_tsl2591.GAIN_LOW
     tsl.integration_time = adafruit_tsl2591.INTEGRATIONTIME_100MS
-    lux = round(tsl.lux, 1)
+    try:
+	lux = round(tsl.lux, 1)
+    except adafruit_tsl2591.exceptions.OverflowError:
+	lux = 99999
+
 except Exception as e:
     lux = None
     with open(error_path, "a") as f:
