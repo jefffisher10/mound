@@ -1,0 +1,180 @@
+MOUND — SCRIPT BREAKDOWN
+How the scripts work together
+================================================================================
+
+OVERVIEW
+
+Every 30 minutes, cron fires three scripts simultaneously:
+
+    log_sensors.py      — gathers data from all sensors
+    update_site.py      — generates graphs and publishes to website
+    camera.py           — captures photos and ships to botpi
+
+These three scripts are completely independent of each other.
+If one fails, the others keep running.
+
+================================================================================
+
+log_sensors.py
+PURPOSE: Read all sensors and append one line to the monthly data file.
+
+WHAT IT DOES:
+1. Sets up I2C bus
+2. Reads each sensor individually, each in its own try/except block
+   - BME280  ? temp, humidity, pressure
+   - TSL2591 ? lux (returns 99999 on overflow instead of crashing)
+   - ADS1115 ? soil moisture (analog channel A0)
+   - DS18B20 ? soil temperature (reads from /sys/bus/w1/devices/)
+   - GPIO17  ? rain digital (0=dry, 1=rain)
+   - INA219  ? voltage and current draw
+3. If a sensor fails, logs the error to errors.txt and uses None for that value
+4. Appends one CSV line to ~/mound/data/YYYY-MM.txt
+5. Creates the monthly file with a header comment if it doesn't exist yet
+
+KEY BEHAVIOR:
+If any individual sensor fails, the script keeps going and logs
+whatever it can. MOUND never goes fully silent due to one bad sensor.
+
+================================================================================
+
+update_site.py
+PURPOSE: Generate graphs and publish the data page to botpi/website.
+
+WHAT IT DOES:
+1. Preprocesses the monthly data file
+   - Strips comment lines
+   - Merges date+time into one field (2026-06-01T00:00:02)
+   - Writes clean version to /tmp/mound_clean.txt for gnuplot
+2. Calls generate_graphs.py to produce today.png
+3. SCPs today.png to botpi:/var/www/html/mound/graphs/
+4. At midnight only:
+   - Archives yesterday's graph as YYYY-MM-DD.png
+   - SCPs archive to botpi:/var/www/html/mound/graphs/archive/
+   - Generates 7day.png from last 7 days of data
+   - SCPs 7day.png to botpi
+5. Calls generate_page.py to produce index.html and latest.json
+6. SCPs index.html to botpi:/var/www/html/mound/
+7. SCPs latest.json to botpi:/var/www/html/mound/data/
+
+================================================================================
+
+generate_graphs.py
+PURPOSE: Write a gnuplot script and run it to produce graph PNGs.
+
+WHAT IT DOES:
+1. Reads /tmp/mound_clean.txt (preprocessed by update_site.py)
+2. Writes a gnuplot script to generate_graphs.gp
+3. Runs gnuplot on that script
+4. Output is today.png (or 7day.png when called for the 7 day graph)
+
+GRAPH PANELS (6 stacked, shared time axis):
+- Air Temperature    -20 to 120 F
+- Humidity           0 to 100%
+- Pressure           980 to 1030 hPa
+- Light              0 to 50000 lux (99999 shown as gap)
+- Soil Temperature   -20 to 120 F
+- Soil Moisture      10000 to 25000 raw
+
+Rain events shown as blue vertical impulses on each panel.
+
+FIXED Y-RANGES: intentional — allows visual comparison across days,
+weeks, and seasons. A January night looks cold, a July afternoon
+looks hot. The compression in mild weather is the price of that.
+
+================================================================================
+
+generate_page.py
+PURPOSE: Build the HTML data page and latest.json from current data.
+
+WHAT IT DOES:
+1. Reads the last line of the monthly data file
+2. Parses each field individually, each in its own try/except
+   - Converts soil moisture raw value to descriptive text:
+     < 13000 = Saturated
+     < 15000 = Moist
+     < 17000 = Moderate
+     >= 17000 = Dry
+   - Converts lux >= 99999 to "Overload"
+3. Builds archive link list from botpi's archive directory
+4. Writes latest.json to ~/mound/data/latest.json
+   (used by sensing.html live teaser via fetch())
+5. Writes complete index.html to ~/mound/page/index.html
+   (SCP'd to botpi by update_site.py)
+
+PAGE STRUCTURE:
+- Nav + header (matches yesteryearforever site style)
+- Current readings table
+- Today's graph
+- 7 day graph
+- Current camera view
+- Daily archive links
+
+================================================================================
+
+camera.py
+PURPOSE: Capture photos and ship them to botpi.
+
+WHAT IT DOES:
+1. Always captures current.jpg (640x480) and SCPs to botpi
+   - Overwrites previous current.jpg every 30 minutes
+2. Reads last two lux readings from data file
+3. Checks for threshold crossings to trigger keeper shots:
+   - Dawn: lux crosses ABOVE 100 going up ? saves dawn/YYYY-MM-DD.jpg
+   - Dusk: lux crosses BELOW 100 going down ? saves dusk/YYYY-MM-DD.jpg
+   - Afternoon: between 12:30-13:00 ? saves afternoon/YYYY-MM-DD.jpg
+   - Midnight: between 00:00-00:30 ? saves midnight/YYYY-MM-DD.jpg
+4. Keeper shots are 1296x972 (half resolution, good timelapse quality)
+5. Each keeper SCP'd immediately to botpi on capture
+6. Errors logged to errors.txt
+
+TIMELAPSE ARCHIVE:
+4 keeper shots per day build up over time:
+    botpi:/var/www/html/mound/images/dawn/
+    botpi:/var/www/html/mound/images/afternoon/
+    botpi:/var/www/html/mound/images/dusk/
+    botpi:/var/www/html/mound/images/midnight/
+
+Eventually these will be assembled into 4 seasonal timelapse videos.
+
+================================================================================
+
+DATA FLOW DIAGRAM
+
+    [sensors]
+        |
+        v
+    log_sensors.py
+        |
+        v
+    ~/mound/data/YYYY-MM.txt
+        |
+        v
+    update_site.py
+        |
+        |---> generate_graphs.py ---> today.png ---> botpi/graphs/
+        |---> generate_page.py  ---> index.html ---> botpi/mound/
+        |                       ---> latest.json --> botpi/data/
+        |---> [midnight] ---------> archive PNG --> botpi/archive/
+        |                       ---> 7day.png ----> botpi/graphs/
+        |
+    camera.py
+        |
+        |---> current.jpg ---------> botpi/images/
+        |---> dawn/YYYY-MM-DD.jpg -> botpi/images/dawn/
+        |---> afternoon/...      --> botpi/images/afternoon/
+        |---> dusk/...           --> botpi/images/dusk/
+        |---> midnight/...       --> botpi/images/midnight/
+
+================================================================================
+
+ERROR HANDLING
+All errors logged to ~/mound/data/errors.txt with timestamp.
+Check it with: cat ~/mound/data/errors.txt
+
+Common errors:
+- ERROR TSL2591: Overflow  — too much direct sunlight, sensor maxed out
+- ERROR BME280             — sensor wiring issue or loose connection
+- ERROR camera SCP         — botpi unreachable or SSH issue
+- ERROR DS18B20            — 1-wire device not found, check wiring
+
+================================================================================

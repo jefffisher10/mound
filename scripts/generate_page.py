@@ -1,11 +1,14 @@
 import os
+import json
 from datetime import datetime
 
 month = datetime.now().strftime('%Y-%m')
 today = datetime.now().strftime('%Y-%m-%d')
 data_file = f'/home/ramblinray/mound/data/{month}.txt'
 output_file = '/home/ramblinray/mound/page/index.html'
+json_path = '/home/ramblinray/mound/data/latest.json'
 os.makedirs('/home/ramblinray/mound/page', exist_ok=True)
+os.makedirs('/var/www/html/mound/data', exist_ok=True)
 
 # -- Get latest reading -----------------------------------
 latest = None
@@ -19,78 +22,73 @@ except:
     pass
 
 # -- Parse latest reading ---------------------------------
-temp = humidity = pressure = lux = soil_temp = soil_moisture = rain = voltage = current = 'N/A'
-updated = 'N/A'
+temp = humidity = pressure = lux = soil_temp = soil_moisture = rain = updated = 'N/A'
 
 if latest:
+    parts = latest.split(', ')
+    updated = parts[0] if len(parts) > 0 else 'N/A'
+
     try:
-        try:
-    		temp = f"{float(parts[1]):.1f}°F"
-	except:
-    		temp = 'N/A'
+        temp = f"{float(parts[1]):.1f} F"
+    except:
+        temp = 'N/A'
 
-	try:
-    		humidity = f"{float(parts[2]):.1f}%"
-	except:
-    		humidity = 'N/A'
+    try:
+        humidity = f"{float(parts[2]):.1f}%"
+    except:
+        humidity = 'N/A'
 
-	try:
-    		pressure = f"{float(parts[3]):.1f} hPa"
-	except:
-    		pressure = 'N/A'
+    try:
+        pressure = f"{float(parts[3]):.1f} hPa"
+    except:
+        pressure = 'N/A'
 
-	try:
-    		lux_val = float(parts[4])
-    		lux = f"{max(0, lux_val):.0f} lux"
-	except:
-    		lux = 'Overload'
+    try:
+        lux_val = float(parts[4])
+        if lux_val >= 99999:
+            lux = 'Overload'
+        else:
+            lux = f"{max(0, lux_val):.0f} lux"
+    except:
+        lux = 'N/A'
 
-	try:
-    		soil_temp = f"{float(parts[5]):.1f}°F"
-	except:
-    		soil_temp = 'N/A'
+    try:
+        soil_temp = f"{float(parts[5]):.1f} F"
+    except:
+        soil_temp = 'N/A'
 
-try:
-    soil_moisture_raw = int(float(parts[6]))
-    if soil_moisture_raw < 13000:
-        soil_moisture = "Saturated"
-    elif soil_moisture_raw < 15000:
-        soil_moisture = "Moist"
-    elif soil_moisture_raw < 17000:
-        soil_moisture = "Moderate"
-    else:
-        soil_moisture = "Dry"
-except:
-    soil_moisture = 'N/A'
-
-try:
-    rain_val = int(float(parts[7]))
-    rain = "Yes 🌧" if rain_val == 1 else "No"
-except:
-    rain = 'N/A'
-
-try:
-    voltage = f"{float(parts[8]):.2f}V"
-except:
-    voltage = 'N/A'
-
-try:
-    current = f"{float(parts[9]):.0f} mA"
-except:
-    current = 'N/A'
-
-        # Soil moisture as descriptive
-        if soil_moisture_raw < 13000:
+    try:
+        raw = int(float(parts[6]))
+        if raw < 13000:
             soil_moisture = "Saturated"
-        elif soil_moisture_raw < 15000:
+        elif raw < 15000:
             soil_moisture = "Moist"
-        elif soil_moisture_raw < 17000:
+        elif raw < 17000:
             soil_moisture = "Moderate"
         else:
             soil_moisture = "Dry"
-
     except:
-        pass
+        soil_moisture = 'N/A'
+
+    try:
+        rain = "Yes" if int(float(parts[7])) == 1 else "No"
+    except:
+        rain = 'N/A'
+
+# -- Write latest.json ------------------------------------
+latest_data = {
+    "updated": updated,
+    "temp": temp,
+    "humidity": humidity,
+    "pressure": pressure,
+    "lux": lux,
+    "soil_temp": soil_temp,
+    "soil_moisture": soil_moisture,
+    "rain": rain,
+    "condition": "Rain" if rain == "Yes" else soil_moisture
+}
+with open(json_path, 'w') as f:
+    json.dump(latest_data, f)
 
 # -- Build archive list -----------------------------------
 archive_dir = '/var/www/html/mound/graphs/archive'
@@ -111,7 +109,7 @@ html = f"""<!DOCTYPE html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="refresh" content="1800">
-  <title>MOUND — Live Data | yesteryear forever</title>
+  <title>MOUND -- Live Data | yesteryear forever</title>
   <link rel="stylesheet" href="../style.css" />
   <script src="../script.js" defer></script>
 </head>
@@ -138,33 +136,34 @@ html = f"""<!DOCTYPE html>
 
     <blockquote>
 
-      <p><strong>MOUND — Live Sensor Data</strong></p>
+      <p><strong>MOUND -- Live Sensor Data</strong></p>
 
-      <p>West Mound St., Columbus, Ohio &nbsp;·&nbsp; updated every 30 minutes<br>
-      <a href="../sensing.html">? about this project</a></p>
-
-      <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
-
-      <p>
-        <strong>Last reading:</strong> {updated}<br><br>
-        ?? &nbsp;Air Temperature &nbsp;&nbsp;&nbsp;&nbsp; {temp}<br>
-        ?? &nbsp;Humidity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {humidity}<br>
-        ?? &nbsp;Pressure &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {pressure}<br>
-        ?? &nbsp;Light &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {lux}<br>
-        ?? &nbsp;Soil Temperature &nbsp; {soil_temp}<br>
-        ?? &nbsp;Soil Moisture &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {soil_moisture}<br>
-        ?? &nbsp;Rain &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {rain}<br>
-      </p>
+      <p>Central Ohio &nbsp;·&nbsp; updated every 30 minutes<br>
+      <a href="../sensing.html">&larr; about this project</a></p>
 
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
 
-      <p><strong>Today — {today}</strong></p>
+      <p><strong>Last reading:</strong> {updated}</p>
+
+      <table style="border:none; border-collapse:collapse; font-family:inherit; font-size:inherit; color:inherit;">
+        <tr><td style="padding: 0.2rem 1.5rem 0.2rem 0;">Air Temperature</td><td>{temp}</td></tr>
+        <tr><td style="padding: 0.2rem 1.5rem 0.2rem 0;">Humidity</td><td>{humidity}</td></tr>
+        <tr><td style="padding: 0.2rem 1.5rem 0.2rem 0;">Pressure</td><td>{pressure}</td></tr>
+        <tr><td style="padding: 0.2rem 1.5rem 0.2rem 0;">Light</td><td>{lux}</td></tr>
+        <tr><td style="padding: 0.2rem 1.5rem 0.2rem 0;">Soil Temperature</td><td>{soil_temp}</td></tr>
+        <tr><td style="padding: 0.2rem 1.5rem 0.2rem 0;">Soil Moisture</td><td>{soil_moisture}</td></tr>
+        <tr><td style="padding: 0.2rem 1.5rem 0.2rem 0;">Rain</td><td>{rain}</td></tr>
+      </table>
+
+      <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
+
+      <p><strong>Today -- {today}</strong></p>
 
       <figure>
         <img src="graphs/today.png"
              alt="Today's sensor readings"
              style="width:100%; max-width:900px; display:block; margin: 0.5rem auto;">
-        <figcaption>Six sensor channels — updated every 30 minutes</figcaption>
+        <figcaption>Six sensor channels -- updated every 30 minutes</figcaption>
       </figure>
 
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
@@ -175,7 +174,16 @@ html = f"""<!DOCTYPE html>
         <img src="graphs/7day.png"
              alt="Last 7 days of sensor readings"
              style="width:100%; max-width:900px; display:block; margin: 0.5rem auto;">
-        <figcaption>Rolling 7-day view — updated nightly</figcaption>
+        <figcaption>Rolling 7-day view -- updated nightly</figcaption>
+      </figure>
+
+      <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
+
+      <figure>
+        <img src="images/current.jpg"
+             alt="Current view from MOUND"
+             style="width:100%; max-width:900px; display:block; margin: 0.5rem auto;">
+        <figcaption>Current view -- updated every 30 minutes</figcaption>
       </figure>
 
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">

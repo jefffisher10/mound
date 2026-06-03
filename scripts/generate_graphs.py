@@ -71,7 +71,7 @@ plot '{clean_file}' using 1:($8==1 ? $4 : 1/0) with impulses lc rgb '#4a9eff' lw
 set ylabel 'Light (lux)' font ',9' textcolor rgb '#555555'
 set yrange [0:50000]
 plot '{clean_file}' using 1:($8==1 ? $5 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
-     '{clean_file}' using 1:($5 < 0 ? 0 : $5) with lines ls 1 notitle
+     '{clean_file}' using 1:($5 < 0 || $5 == 99999 ? 1/0 : $5) with lines ls 1 notitle
 
 # -- Soil Temperature -------------------------------------
 set ylabel 'Soil Temp (F)' font ',9' textcolor rgb '#555555'

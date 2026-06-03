@@ -185,3 +185,10 @@ if page_scp.returncode == 0:
     print("Page uploaded to botpi!")
 else:
     print("Page SCP failed!")
+# -- Upload latest.json to botpi -------------------------
+subprocess.run([
+    'scp',
+    '/home/ramblinray/mound/data/latest.json',
+    'botpi@192.168.1.33:/var/www/html/mound/data/latest.json'
+])
+print("JSON uploaded to botpi!")
