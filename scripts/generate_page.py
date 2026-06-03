@@ -180,10 +180,10 @@ html = f"""<!DOCTYPE html>
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
 
       <figure>
-        <img src="images/current.jpg"
-             alt="Current view from MOUND"
+        <img src="images/latest.jpg"
+             alt="Latest image from MOUND"
              style="width:100%; max-width:900px; display:block; margin: 0.5rem auto;">
-        <figcaption>Current view -- updated every 30 minutes</figcaption>
+        <figcaption>Latest image -- updated up to 4 times daily</figcaption>
       </figure>
 
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">

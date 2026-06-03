@@ -4,3 +4,5 @@
  the sensor using adafruit_tsl2591.GAIN_LOW
 2026-06-02 13:30:03, ERROR TSL2591: Overflow reading light channels!, Try to reduce the gain of
  the sensor using adafruit_tsl2591.GAIN_LOW
+2026-06-02 21:30:14, ERROR RAIN: No access to /dev/mem.  Try running as root!
+2026-06-02 21:30:30, ERROR camera: failed to capture current.jpg

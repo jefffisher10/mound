@@ -1,7 +1,7 @@
 import subprocess
 import os
 from datetime import datetime
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 
 # -- Paths ------------------------------------------------
 today = datetime.now().strftime('%Y-%m-%d')
@@ -13,7 +13,6 @@ timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
 data_file = f'/home/ramblinray/mound/data/{month}.txt'
 error_path = '/home/ramblinray/mound/data/errors.txt'
 
-current_jpg   = '/home/ramblinray/mound/images/current.jpg'
 dawn_jpg      = f'/home/ramblinray/mound/images/dawn/{today}.jpg'
 afternoon_jpg = f'/home/ramblinray/mound/images/afternoon/{today}.jpg'
 dusk_jpg      = f'/home/ramblinray/mound/images/dusk/{today}.jpg'
@@ -35,7 +34,6 @@ def stamp(path, label=None):
         text = f'MOUND  {timestamp}'
         if label:
             text = f'MOUND  {timestamp}  [{label}]'
-        # Shadow for readability
         draw.text((11, 11), text, fill='black')
         draw.text((10, 10), text, fill='white')
         img.save(path)
@@ -86,15 +84,6 @@ def ship(local_path, remote_path):
         return False
     return True
 
-# -- Always capture current conditions --------------------
-if capture(current_jpg, 640, 480):
-    stamp(current_jpg)
-    ship(current_jpg, f'{BOTPI_IMAGES}/current.jpg')
-    print("Current shot uploaded!")
-else:
-    with open(error_path, 'a') as f:
-        f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, ERROR camera: failed to capture current.jpg\n")
-
 # -- Check for keeper shots -------------------------------
 lux_readings = get_last_lux_readings()
 prev_lux = lux_readings[-2] if len(lux_readings) >= 2 else None
@@ -131,3 +120,5 @@ if hour == 0 and minute < 31:
             stamp(midnight_jpg, 'midnight')
             ship(midnight_jpg, f'{BOTPI_IMAGES}/midnight/{today}.jpg')
             print("Midnight keeper captured!")
+
+print("Camera script complete.")

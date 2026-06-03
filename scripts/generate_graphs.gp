@@ -7,7 +7,7 @@ set xdata time
 set timefmt '%Y-%m-%dT%H:%M:%S'
 set format x '%H:%M'
 set xtics rotate by -45 font ',9'
-set xrange ['2026-06-02T00:00:00':'2026-06-02T23:59:59']
+set xrange ['2026-06-03T00:00:00':'2026-06-03T23:59:59']
 
 set grid lc rgb '#e0e0e0' lw 1
 set border lc rgb '#999999'
@@ -16,7 +16,7 @@ set style line 1 lc rgb '#2C3E50' lw 1.5
 set style line 2 lc rgb '#c0392b' lw 1.5
 set style line 3 lc rgb '#27ae60' lw 1.5
 
-set multiplot layout 6,1     title 'MOUND — 2026-06-02' font ',13'     margins 0.12, 0.97, 0.05, 0.95     spacing 0,0.02
+set multiplot layout 6,1     title 'MOUND — 2026-06-03' font ',13'     margins 0.12, 0.97, 0.05, 0.95     spacing 0,0.02
 
 set ylabel 'Air Temp (F)' font ',9' textcolor rgb '#555555'
 set yrange [-20:120]
