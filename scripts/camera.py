@@ -13,15 +13,11 @@ timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
 data_file = f'/home/ramblinray/mound/data/{month}.txt'
 error_path = '/home/ramblinray/mound/data/errors.txt'
 
-dawn_jpg      = f'/home/ramblinray/mound/images/dawn/{today}.jpg'
-afternoon_jpg = f'/home/ramblinray/mound/images/afternoon/{today}.jpg'
-dusk_jpg      = f'/home/ramblinray/mound/images/dusk/{today}.jpg'
-midnight_jpg  = f'/home/ramblinray/mound/images/midnight/{today}.jpg'
+# Only noon is archived for timelapse
+noon_jpg = f'/home/ramblinray/mound/images/noon/{today}.jpg'
+temp_jpg = '/home/ramblinray/mound/images/temp.jpg'
 
-os.makedirs('/home/ramblinray/mound/images/dawn', exist_ok=True)
-os.makedirs('/home/ramblinray/mound/images/afternoon', exist_ok=True)
-os.makedirs('/home/ramblinray/mound/images/dusk', exist_ok=True)
-os.makedirs('/home/ramblinray/mound/images/midnight', exist_ok=True)
+os.makedirs('/home/ramblinray/mound/images/noon', exist_ok=True)
 
 BOTPI = 'botpi@192.168.1.33'
 BOTPI_IMAGES = '/var/www/html/mound/images'
@@ -84,7 +80,17 @@ def ship(local_path, remote_path):
         return False
     return True
 
-# -- Check for keeper shots -------------------------------
+# -- Capture and ship latest.jpg only (no archive) --------
+def capture_latest(label):
+    if capture(temp_jpg, 1296, 972):
+        stamp(temp_jpg, label)
+        ship(temp_jpg, f'{BOTPI_IMAGES}/latest.jpg')
+        print(f"{label} shot uploaded as latest.jpg!")
+    else:
+        with open(error_path, 'a') as f:
+            f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, ERROR camera: failed to capture {label}\n")
+
+# -- Lux readings for dawn/dusk detection -----------------
 lux_readings = get_last_lux_readings()
 prev_lux = lux_readings[-2] if len(lux_readings) >= 2 else None
 curr_lux = lux_readings[-1] if len(lux_readings) >= 1 else None
@@ -92,33 +98,29 @@ curr_lux = lux_readings[-1] if len(lux_readings) >= 1 else None
 DAWN_THRESHOLD = 100
 DUSK_THRESHOLD = 100
 
+# Dawn -- lux just crossed above threshold
 if prev_lux is not None and curr_lux is not None:
     if prev_lux < DAWN_THRESHOLD and curr_lux >= DAWN_THRESHOLD:
-        if not os.path.exists(dawn_jpg):
-            if capture(dawn_jpg, 1296, 972):
-                stamp(dawn_jpg, 'dawn')
-                ship(dawn_jpg, f'{BOTPI_IMAGES}/dawn/{today}.jpg')
-                print("Dawn keeper captured!")
+        capture_latest('dawn')
 
+    # Dusk -- lux just crossed below threshold
     if prev_lux >= DAWN_THRESHOLD and curr_lux < DUSK_THRESHOLD:
-        if not os.path.exists(dusk_jpg):
-            if capture(dusk_jpg, 1296, 972):
-                stamp(dusk_jpg, 'dusk')
-                ship(dusk_jpg, f'{BOTPI_IMAGES}/dusk/{today}.jpg')
-                print("Dusk keeper captured!")
+        capture_latest('dusk')
 
+# Mid-morning -- 09:00
+if hour == 9 and minute < 31:
+    capture_latest('mid-morning')
+
+# Noon -- 12:30, also archive for timelapse
 if hour == 12 and minute >= 30:
-    if not os.path.exists(afternoon_jpg):
-        if capture(afternoon_jpg, 1296, 972):
-            stamp(afternoon_jpg, 'afternoon')
-            ship(afternoon_jpg, f'{BOTPI_IMAGES}/afternoon/{today}.jpg')
-            print("Afternoon keeper captured!")
+    if capture(noon_jpg, 1296, 972):
+        stamp(noon_jpg, 'noon')
+        ship(noon_jpg, f'{BOTPI_IMAGES}/noon/{today}.jpg')
+        ship(noon_jpg, f'{BOTPI_IMAGES}/latest.jpg')
+        print("Noon keeper archived and uploaded!")
 
-if hour == 0 and minute < 31:
-    if not os.path.exists(midnight_jpg):
-        if capture(midnight_jpg, 1296, 972):
-            stamp(midnight_jpg, 'midnight')
-            ship(midnight_jpg, f'{BOTPI_IMAGES}/midnight/{today}.jpg')
-            print("Midnight keeper captured!")
+# Mid-afternoon -- 15:00
+if hour == 15 and minute < 31:
+    capture_latest('mid-afternoon')
 
 print("Camera script complete.")
