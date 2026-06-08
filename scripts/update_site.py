@@ -1,6 +1,8 @@
 import subprocess
 import os
+import time
 from datetime import datetime, timedelta
+time.sleep(10)  # wait for log_sensors.py to finish
 
 today = datetime.now().strftime('%Y-%m-%d')
 month = datetime.now().strftime('%Y-%m')
@@ -89,14 +91,7 @@ unset multiplot
 """
 
 # -- Generate today's graph -------------------------------
-preprocess(data_file, clean_file, date_filter=today)
-gp = make_gp_script(clean_file, graph_out,
-                     f'MOUND — {today}',
-                     f'{today}T00:00:00',
-                     f'{today}T23:59:59')
-with open(gp_file, 'w') as f:
-    f.write(gp)
-subprocess.run(['gnuplot', gp_file])
+subprocess.run(['python', '/home/ramblinray/mound/scripts/generate_graphs.py'])
 print("Today's graph generated!")
 
 # -- Archive today's graph at midnight --------------------

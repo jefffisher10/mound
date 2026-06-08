@@ -91,7 +91,7 @@ with open(json_path, 'w') as f:
     json.dump(latest_data, f)
 
 # -- Build archive list -----------------------------------
-archive_dir = '/var/www/html/mound/graphs/archive'
+archive_dir = '/home/ramblinray/mound/graphs/archive'
 archive_links = ''
 try:
     files = sorted(os.listdir(archive_dir), reverse=True)
