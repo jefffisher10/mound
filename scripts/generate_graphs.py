@@ -36,7 +36,8 @@ def get_range(filepath, col, exclude_val=None):
                     try:
                         v = float(parts[col])
                         if exclude_val is None or v != exclude_val:
-                            values.append(v)
+                            if v > -9000:  # filter out corrupt sensor readings
+                                values.append(v)
                     except:
                         pass
     except:
