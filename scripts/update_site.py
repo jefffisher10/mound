@@ -95,7 +95,7 @@ subprocess.run(['python', '/home/ramblinray/mound/scripts/generate_graphs.py'])
 print("Today's graph generated!")
 
 # -- Archive today's graph at midnight --------------------
-if hour == 0 and minute < 31:
+if hour == 23 and minute >= 30:
     yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
     archive_path = f'{archive_dir}/{yesterday}.png'
     if os.path.exists(graph_out):
