@@ -96,8 +96,7 @@ print("Today's graph generated!")
 
 # -- Archive today's graph at midnight --------------------
 if hour == 23 and minute >= 30:
-    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    archive_path = f'{archive_dir}/{yesterday}.png'
+    archive_path = f'{archive_dir}/{today}.png'
     if os.path.exists(graph_out):
         subprocess.run(['cp', graph_out, archive_path])
         print(f"Archived yesterday's graph as {yesterday}.png")
@@ -105,7 +104,7 @@ if hour == 23 and minute >= 30:
     # SCP archive to botpi
     subprocess.run([
         'scp', archive_path,
-        f'botpi@192.168.1.33:/var/www/html/mound/graphs/archive/{yesterday}.png'
+        f'botpi@192.168.1.33:/var/www/html/mound/graphs/archive/{today}.png'
     ])
     print(f"Archive uploaded to botpi!")
 
