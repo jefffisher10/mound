@@ -10,17 +10,20 @@ month = datetime.now().strftime('%Y-%m')
 hour = datetime.now().hour
 minute = datetime.now().minute
 
-graph_out  = '/home/ramblinray/mound/graphs/today.png'
+error_path  = '/home/ramblinray/mound/data/errors.txt'
+graph_out   = '/home/ramblinray/mound/graphs/today.png'
 archive_dir = '/home/ramblinray/mound/graphs/archive'
-error_path = '/home/ramblinray/mound/data/errors.txt'
 
-# -- Generate today's graph (and 7day at 23:30) -----------
+# -- Debug log --------------------------------------------
+with open(error_path, 'a') as f:
+    f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, DEBUG: hour={hour} minute={minute}\n")
+
+# -- Generate today's graph -------------------------------
 subprocess.run(['python', '/home/ramblinray/mound/scripts/generate_graphs.py'])
 
 # -- Archive today's complete graph at 23:30 --------------
 if hour == 23 and minute >= 30:
     archive_path = f'{archive_dir}/{today}.png'
-
     if os.path.exists(graph_out):
         subprocess.run(['cp', graph_out, archive_path])
         print(f"Archived today's graph as {today}.png")
