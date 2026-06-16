@@ -7,3 +7,29 @@
 2026-06-02 21:30:14, ERROR RAIN: No access to /dev/mem.  Try running as root!
 2026-06-02 21:30:30, ERROR camera: failed to capture current.jpg
 2026-06-15 07:38:33, DEBUG: hour=7 minute=38
+2026-06-15 08:00:13, DEBUG: hour=8 minute=0
+2026-06-15 08:30:12, DEBUG: hour=8 minute=30
+2026-06-15 09:00:13, DEBUG: hour=9 minute=0
+2026-06-15 09:30:13, DEBUG: hour=9 minute=30
+2026-06-15 10:00:13, DEBUG: hour=10 minute=0
+2026-06-15 10:30:13, DEBUG: hour=10 minute=30
+2026-06-15 11:00:13, DEBUG: hour=11 minute=0
+2026-06-15 11:30:13, DEBUG: hour=11 minute=30
+2026-06-15 12:00:13, DEBUG: hour=12 minute=0
+2026-06-15 12:30:12, DEBUG: hour=12 minute=30
+2026-06-15 13:00:13, DEBUG: hour=13 minute=0
+2026-06-15 13:30:13, DEBUG: hour=13 minute=30
+2026-06-15 14:00:13, DEBUG: hour=14 minute=0
+2026-06-15 14:30:13, DEBUG: hour=14 minute=30
+2026-06-15 15:00:12, DEBUG: hour=15 minute=0
+2026-06-15 15:30:13, DEBUG: hour=15 minute=30
+2026-06-15 16:00:12, DEBUG: hour=16 minute=0
+2026-06-15 16:30:13, DEBUG: hour=16 minute=30
+2026-06-15 17:00:12, DEBUG: hour=17 minute=0
+2026-06-15 17:30:12, DEBUG: hour=17 minute=30
+2026-06-15 18:00:13, DEBUG: hour=18 minute=0
+2026-06-15 18:30:12, DEBUG: hour=18 minute=30
+2026-06-15 19:00:13, DEBUG: hour=19 minute=0
+2026-06-15 19:30:13, DEBUG: hour=19 minute=30
+2026-06-15 20:00:13, DEBUG: hour=20 minute=0
+2026-06-15 20:30:13, DEBUG: hour=20 minute=30
