@@ -24,24 +24,21 @@ subprocess.run(['python', '/home/ramblinray/mound/scripts/generate_graphs.py'])
 # -- Archive today's complete graph at 23:30 --------------
 if hour == 23 and minute >= 30:
     archive_path = f'{archive_dir}/{today}.png'
+    with open(error_path, 'a') as f:
+        f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, DEBUG: archive block firing\n")
     if os.path.exists(graph_out):
         subprocess.run(['cp', graph_out, archive_path])
-        print(f"Archived today's graph as {today}.png")
+        with open(error_path, 'a') as f:
+            f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, DEBUG: archive copied ok\n")
     else:
-        print("WARNING: today.png not found, skipping archive")
-
-    subprocess.run([
+        with open(error_path, 'a') as f:
+            f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, DEBUG: today.png NOT FOUND\n")
+    scp = subprocess.run([
         'scp', archive_path,
         f'botpi@192.168.1.33:/var/www/html/mound/graphs/archive/{today}.png'
     ])
-    print("Archive uploaded to botpi!")
-
-    subprocess.run([
-        'scp',
-        '/home/ramblinray/mound/graphs/7day.png',
-        'botpi@192.168.1.33:/var/www/html/mound/graphs/7day.png'
-    ])
-    print("7 day graph uploaded to botpi!")
+    with open(error_path, 'a') as f:
+        f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, DEBUG: archive SCP returned {scp.returncode}\n")
 
 # -- Upload today's graph to botpi ------------------------
 scp_result = subprocess.run([
