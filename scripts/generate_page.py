@@ -183,7 +183,7 @@ html = f"""<!DOCTYPE html>
         <img src="images/latest.jpg"
              alt="Latest image from MOUND"
              style="width:100%; max-width:900px; display:block; margin: 0.5rem auto;">
-        <figcaption>Latest image -- updated up to 5 times daily</figcaption>
+        <figcaption>Latest image -- updated once a day around noon</figcaption>
       </figure>
 
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
