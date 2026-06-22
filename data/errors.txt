@@ -264,3 +264,7 @@
 2026-06-22 14:14:24, DEBUG: archive block firing
 2026-06-22 14:14:24, DEBUG: archive copied ok
 2026-06-22 14:14:34, DEBUG: archive SCP returned 0
+2026-06-22 14:30:13, DEBUG: hour=14 minute=30
+2026-06-22 15:00:13, DEBUG: hour=15 minute=0
+2026-06-22 15:30:13, DEBUG: hour=15 minute=30
+2026-06-22 16:00:12, DEBUG: hour=16 minute=0
