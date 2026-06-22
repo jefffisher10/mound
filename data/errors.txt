@@ -115,3 +115,152 @@
 2026-06-18 12:00:13, DEBUG: hour=12 minute=0
 2026-06-18 12:11:26, DEBUG: hour=12 minute=11
 2026-06-18 12:30:13, DEBUG: hour=12 minute=30
+2026-06-18 13:00:13, DEBUG: hour=13 minute=0
+2026-06-18 13:30:12, DEBUG: hour=13 minute=30
+2026-06-18 14:00:12, DEBUG: hour=14 minute=0
+2026-06-19 00:30:13, DEBUG: hour=0 minute=30
+2026-06-19 01:00:13, DEBUG: hour=1 minute=0
+2026-06-19 01:30:13, DEBUG: hour=1 minute=30
+2026-06-19 02:00:12, DEBUG: hour=2 minute=0
+2026-06-19 02:30:12, DEBUG: hour=2 minute=30
+2026-06-19 03:00:13, DEBUG: hour=3 minute=0
+2026-06-19 03:30:13, DEBUG: hour=3 minute=30
+2026-06-19 04:00:12, DEBUG: hour=4 minute=0
+2026-06-19 04:30:12, DEBUG: hour=4 minute=30
+2026-06-19 05:00:13, DEBUG: hour=5 minute=0
+2026-06-19 05:30:13, DEBUG: hour=5 minute=30
+2026-06-19 06:00:13, DEBUG: hour=6 minute=0
+2026-06-19 06:30:13, DEBUG: hour=6 minute=30
+2026-06-19 07:00:13, DEBUG: hour=7 minute=0
+2026-06-19 07:30:13, DEBUG: hour=7 minute=30
+2026-06-19 08:00:13, DEBUG: hour=8 minute=0
+2026-06-19 08:30:12, DEBUG: hour=8 minute=30
+2026-06-19 09:00:12, DEBUG: hour=9 minute=0
+2026-06-19 09:30:13, DEBUG: hour=9 minute=30
+2026-06-19 10:00:13, DEBUG: hour=10 minute=0
+2026-06-19 10:30:13, DEBUG: hour=10 minute=30
+2026-06-19 11:00:13, DEBUG: hour=11 minute=0
+2026-06-19 11:30:12, DEBUG: hour=11 minute=30
+2026-06-19 12:00:12, DEBUG: hour=12 minute=0
+2026-06-19 12:30:13, DEBUG: hour=12 minute=30
+2026-06-19 13:00:13, DEBUG: hour=13 minute=0
+2026-06-19 13:30:13, DEBUG: hour=13 minute=30
+2026-06-19 14:00:13, DEBUG: hour=14 minute=0
+2026-06-19 14:30:12, DEBUG: hour=14 minute=30
+2026-06-19 15:00:12, DEBUG: hour=15 minute=0
+2026-06-19 15:30:13, DEBUG: hour=15 minute=30
+2026-06-19 16:00:13, DEBUG: hour=16 minute=0
+2026-06-19 16:30:13, DEBUG: hour=16 minute=30
+2026-06-19 17:00:13, DEBUG: hour=17 minute=0
+2026-06-19 17:30:12, DEBUG: hour=17 minute=30
+2026-06-19 18:00:12, DEBUG: hour=18 minute=0
+2026-06-19 18:30:12, DEBUG: hour=18 minute=30
+2026-06-19 19:00:13, DEBUG: hour=19 minute=0
+2026-06-19 19:30:13, DEBUG: hour=19 minute=30
+2026-06-19 20:00:13, DEBUG: hour=20 minute=0
+2026-06-19 20:30:13, DEBUG: hour=20 minute=30
+2026-06-19 21:00:12, DEBUG: hour=21 minute=0
+2026-06-19 21:30:13, DEBUG: hour=21 minute=30
+2026-06-19 22:00:13, DEBUG: hour=22 minute=0
+2026-06-19 22:30:13, DEBUG: hour=22 minute=30
+2026-06-19 23:00:13, DEBUG: hour=23 minute=0
+2026-06-19 23:30:13, DEBUG: hour=23 minute=30
+2026-06-19 23:30:17, DEBUG: archive block firing
+2026-06-19 23:30:17, DEBUG: archive copied ok
+2026-06-19 23:30:28, DEBUG: archive SCP returned 0
+2026-06-20 00:00:13, DEBUG: hour=0 minute=0
+2026-06-20 00:30:13, DEBUG: hour=0 minute=30
+2026-06-20 01:00:13, DEBUG: hour=1 minute=0
+2026-06-20 01:30:13, DEBUG: hour=1 minute=30
+2026-06-20 02:00:13, DEBUG: hour=2 minute=0
+2026-06-20 02:30:13, DEBUG: hour=2 minute=30
+2026-06-20 10:00:56, DEBUG: hour=10 minute=0
+2026-06-20 10:30:12, DEBUG: hour=10 minute=30
+2026-06-20 11:00:13, DEBUG: hour=11 minute=0
+2026-06-20 11:30:13, DEBUG: hour=11 minute=30
+2026-06-20 12:00:13, DEBUG: hour=12 minute=0
+2026-06-20 12:30:13, DEBUG: hour=12 minute=30
+2026-06-20 13:00:12, DEBUG: hour=13 minute=0
+2026-06-20 13:30:12, DEBUG: hour=13 minute=30
+2026-06-20 14:00:12, DEBUG: hour=14 minute=0
+2026-06-20 14:30:13, DEBUG: hour=14 minute=30
+2026-06-20 15:00:12, DEBUG: hour=15 minute=0
+2026-06-20 15:30:12, DEBUG: hour=15 minute=30
+2026-06-20 16:00:13, DEBUG: hour=16 minute=0
+2026-06-20 16:30:13, DEBUG: hour=16 minute=30
+2026-06-20 17:00:13, DEBUG: hour=17 minute=0
+2026-06-20 17:30:13, DEBUG: hour=17 minute=30
+2026-06-20 18:00:12, DEBUG: hour=18 minute=0
+2026-06-20 18:30:13, DEBUG: hour=18 minute=30
+2026-06-20 19:00:12, DEBUG: hour=19 minute=0
+2026-06-20 19:30:13, DEBUG: hour=19 minute=30
+2026-06-20 20:00:13, DEBUG: hour=20 minute=0
+2026-06-20 20:30:13, DEBUG: hour=20 minute=30
+2026-06-20 21:00:13, DEBUG: hour=21 minute=0
+2026-06-20 21:30:13, DEBUG: hour=21 minute=30
+2026-06-20 22:00:13, DEBUG: hour=22 minute=0
+2026-06-20 22:30:13, DEBUG: hour=22 minute=30
+2026-06-20 23:00:13, DEBUG: hour=23 minute=0
+2026-06-20 23:30:13, DEBUG: hour=23 minute=30
+2026-06-20 23:30:17, DEBUG: archive block firing
+2026-06-20 23:30:17, DEBUG: archive copied ok
+2026-06-20 23:30:28, DEBUG: archive SCP returned 0
+2026-06-21 00:00:12, DEBUG: hour=0 minute=0
+2026-06-21 00:30:12, DEBUG: hour=0 minute=30
+2026-06-21 01:00:13, DEBUG: hour=1 minute=0
+2026-06-21 01:30:13, DEBUG: hour=1 minute=30
+2026-06-21 02:00:13, DEBUG: hour=2 minute=0
+2026-06-21 02:30:13, DEBUG: hour=2 minute=30
+2026-06-21 03:00:13, DEBUG: hour=3 minute=0
+2026-06-21 03:30:13, DEBUG: hour=3 minute=30
+2026-06-21 04:00:13, DEBUG: hour=4 minute=0
+2026-06-21 04:30:13, DEBUG: hour=4 minute=30
+2026-06-21 10:00:14, DEBUG: hour=10 minute=0
+2026-06-21 10:30:13, DEBUG: hour=10 minute=30
+2026-06-21 11:00:13, DEBUG: hour=11 minute=0
+2026-06-21 11:30:13, DEBUG: hour=11 minute=30
+2026-06-21 12:00:13, DEBUG: hour=12 minute=0
+2026-06-21 12:30:13, DEBUG: hour=12 minute=30
+2026-06-21 13:00:14, ERROR RAIN: No access to /dev/mem.  Try running as root!
+2026-06-21 13:00:21, DEBUG: hour=13 minute=0
+2026-06-21 15:00:12, DEBUG: hour=15 minute=0
+2026-06-21 15:30:13, DEBUG: hour=15 minute=30
+2026-06-21 16:00:13, DEBUG: hour=16 minute=0
+2026-06-21 16:30:13, DEBUG: hour=16 minute=30
+2026-06-21 17:00:13, DEBUG: hour=17 minute=0
+2026-06-21 17:30:13, DEBUG: hour=17 minute=30
+2026-06-21 18:00:13, DEBUG: hour=18 minute=0
+2026-06-21 18:30:12, DEBUG: hour=18 minute=30
+2026-06-21 19:00:13, DEBUG: hour=19 minute=0
+2026-06-21 19:30:12, DEBUG: hour=19 minute=30
+2026-06-21 20:00:13, DEBUG: hour=20 minute=0
+2026-06-21 20:30:13, DEBUG: hour=20 minute=30
+2026-06-21 21:00:12, DEBUG: hour=21 minute=0
+2026-06-21 21:30:12, DEBUG: hour=21 minute=30
+2026-06-21 22:00:13, DEBUG: hour=22 minute=0
+2026-06-21 22:30:12, DEBUG: hour=22 minute=30
+2026-06-21 23:00:13, DEBUG: hour=23 minute=0
+2026-06-21 23:30:13, DEBUG: hour=23 minute=30
+2026-06-21 23:30:17, DEBUG: archive block firing
+2026-06-21 23:30:17, DEBUG: archive copied ok
+2026-06-21 23:30:27, DEBUG: archive SCP returned 0
+2026-06-22 00:00:13, DEBUG: hour=0 minute=0
+2026-06-22 00:30:12, DEBUG: hour=0 minute=30
+2026-06-22 01:00:13, DEBUG: hour=1 minute=0
+2026-06-22 01:30:13, DEBUG: hour=1 minute=30
+2026-06-22 02:00:13, DEBUG: hour=2 minute=0
+2026-06-22 02:30:13, DEBUG: hour=2 minute=30
+2026-06-22 03:00:13, DEBUG: hour=3 minute=0
+2026-06-22 03:30:13, DEBUG: hour=3 minute=30
+2026-06-22 04:00:13, DEBUG: hour=4 minute=0
+2026-06-22 04:30:13, DEBUG: hour=4 minute=30
+2026-06-22 12:30:13, DEBUG: hour=12 minute=30
+2026-06-22 13:00:13, DEBUG: hour=13 minute=0
+2026-06-22 13:30:13, DEBUG: hour=13 minute=30
+2026-06-22 14:00:14, ERROR RAIN: No access to /dev/mem.  Try running as root!
+2026-06-22 14:00:19, DEBUG: hour=14 minute=0
+2026-06-22 14:12:13, DEBUG: hour=14 minute=12
+2026-06-22 14:14:20, DEBUG: hour=14 minute=14
+2026-06-22 14:14:24, DEBUG: archive block firing
+2026-06-22 14:14:24, DEBUG: archive copied ok
+2026-06-22 14:14:34, DEBUG: archive SCP returned 0
