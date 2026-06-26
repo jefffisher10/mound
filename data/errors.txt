@@ -420,3 +420,6 @@
 2026-06-26 16:30:13, DEBUG: hour=16 minute=30
 2026-06-26 17:00:13, DEBUG: hour=17 minute=0
 2026-06-26 17:30:13, DEBUG: hour=17 minute=30
+2026-06-26 18:00:13, DEBUG: hour=18 minute=0
+2026-06-26 18:30:12, DEBUG: hour=18 minute=30
+2026-06-26 19:00:13, DEBUG: hour=19 minute=0
