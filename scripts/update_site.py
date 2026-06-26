@@ -18,10 +18,7 @@ archive_dir = '/home/ramblinray/mound/graphs/archive'
 with open(error_path, 'a') as f:
     f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, DEBUG: hour={hour} minute={minute}\n")
 
-# -- Generate today's graph -------------------------------
-subprocess.run(['python', '/home/ramblinray/mound/scripts/generate_graphs.py'])
-
-# -- Archive today's complete graph at 23:30 --------------
+# -- Archive BEFORE regenerating graph --------------------
 if hour == 23 and minute >= 30:
     archive_path = f'{archive_dir}/{today}.png'
     with open(error_path, 'a') as f:
@@ -40,12 +37,14 @@ if hour == 23 and minute >= 30:
     with open(error_path, 'a') as f:
         f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, DEBUG: archive SCP returned {scp.returncode}\n")
 
+# -- Generate today's graph -------------------------------
+subprocess.run(['python', '/home/ramblinray/mound/scripts/generate_graphs.py'])
+
 # -- Upload today's graph to botpi ------------------------
 scp_result = subprocess.run([
     'scp', graph_out,
     'botpi@192.168.1.33:/var/www/html/mound/graphs/today.png'
 ])
-
 if scp_result.returncode == 0:
     print("Today's graph uploaded to botpi!")
 else:
@@ -61,7 +60,6 @@ page_scp = subprocess.run([
     '/home/ramblinray/mound/page/index.html',
     'botpi@192.168.1.33:/var/www/html/mound/index.html'
 ])
-
 if page_scp.returncode == 0:
     print("Page uploaded to botpi!")
 else:
