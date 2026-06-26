@@ -411,3 +411,12 @@
 2026-06-26 12:00:13, DEBUG: hour=12 minute=0
 2026-06-26 12:30:13, DEBUG: hour=12 minute=30
 2026-06-26 13:00:13, DEBUG: hour=13 minute=0
+2026-06-26 13:30:13, DEBUG: hour=13 minute=30
+2026-06-26 14:00:12, DEBUG: hour=14 minute=0
+2026-06-26 14:30:13, DEBUG: hour=14 minute=30
+2026-06-26 15:00:13, DEBUG: hour=15 minute=0
+2026-06-26 15:30:12, DEBUG: hour=15 minute=30
+2026-06-26 16:00:13, DEBUG: hour=16 minute=0
+2026-06-26 16:30:13, DEBUG: hour=16 minute=30
+2026-06-26 17:00:13, DEBUG: hour=17 minute=0
+2026-06-26 17:30:13, DEBUG: hour=17 minute=30
