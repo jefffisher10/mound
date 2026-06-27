@@ -32,7 +32,7 @@ if hour == 23 and minute >= 30:
             f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, DEBUG: today.png NOT FOUND\n")
     scp = subprocess.run([
         'scp', archive_path,
-        f'botpi@192.168.1.33:/var/www/html/mound/graphs/archive/{today}.png'
+        f'ramblinray@192.168.1.33:/var/www/html/mound/graphs/archive/{today}.png'
     ])
     with open(error_path, 'a') as f:
         f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, DEBUG: archive SCP returned {scp.returncode}\n")
@@ -40,13 +40,13 @@ if hour == 23 and minute >= 30:
 # -- Generate today's graph -------------------------------
 subprocess.run(['python', '/home/ramblinray/mound/scripts/generate_graphs.py'])
 
-# -- Upload today's graph to botpi ------------------------
+# -- Upload today's graph to ramblinray -------------------
 scp_result = subprocess.run([
     'scp', graph_out,
-    'botpi@192.168.1.33:/var/www/html/mound/graphs/today.png'
+    'ramblinray@192.168.1.33:/var/www/html/mound/graphs/today.png'
 ])
 if scp_result.returncode == 0:
-    print("Today's graph uploaded to botpi!")
+    print("Today's graph uploaded to ramblinray!")
 else:
     with open(error_path, 'a') as f:
         f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, ERROR: SCP failed\n")
@@ -58,17 +58,17 @@ subprocess.run(['python', '/home/ramblinray/mound/scripts/generate_page.py'])
 page_scp = subprocess.run([
     'scp',
     '/home/ramblinray/mound/page/index.html',
-    'botpi@192.168.1.33:/var/www/html/mound/index.html'
+    'ramblinray@192.168.1.33:/var/www/html/mound/index.html'
 ])
 if page_scp.returncode == 0:
-    print("Page uploaded to botpi!")
+    print("Page uploaded to ramblinray!")
 else:
     print("Page SCP failed!")
 
-# -- Upload latest.json to botpi --------------------------
+# -- Upload latest.json to ramblinray ---------------------
 subprocess.run([
     'scp',
     '/home/ramblinray/mound/data/latest.json',
-    'botpi@192.168.1.33:/var/www/html/mound/data/latest.json'
+    'ramblinray@192.168.1.33:/var/www/html/mound/data/latest.json'
 ])
-print("JSON uploaded to botpi!")
+print("JSON uploaded to ramblinray!")

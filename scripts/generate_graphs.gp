@@ -22,33 +22,33 @@ set multiplot layout 6,1 \
     spacing 0,0.02
 
 set ylabel 'Air Temp (F)' font ',9' textcolor rgb '#555555'
-set yrange [68.4:69.2]
+set yrange [67.3:81.3]
 set ytics font ',9'
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $2 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:2 with lines ls 1 notitle
 
 set ylabel 'Humidity (%)' font ',9' textcolor rgb '#555555'
-set yrange [99.0:101.0]
+set yrange [86.8:101.2]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $3 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:3 with lines ls 1 notitle
 
 set ylabel 'Pressure (hPa)' font ',9' textcolor rgb '#555555'
-set yrange [989.2:991.3]
+set yrange [988.1:991.4]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $4 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:4 with lines ls 1 notitle
 
 set ylabel 'Light (lux)' font ',9' textcolor rgb '#555555'
-set yrange [0:5.1]
+set yrange [0:23848.0]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $5 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:($5 >= 99999 ? 1/0 : ($5 < 0 ? 0 : $5)) with lines ls 1 notitle
 
 set ylabel 'Soil Temp (F)' font ',9' textcolor rgb '#555555'
-set yrange [71.2:72.1]
+set yrange [70.9:75.5]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $6 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:6 with lines ls 2 notitle
 
 set ylabel 'Soil Moisture' font ',9' textcolor rgb '#555555'
-set yrange [11584.2:12037.8]
+set yrange [11228.9:12070.1]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $7 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:7 with lines ls 3 notitle
 

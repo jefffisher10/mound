@@ -444,3 +444,6 @@
 2026-06-27 02:30:13, DEBUG: hour=2 minute=30
 2026-06-27 03:00:12, DEBUG: hour=3 minute=0
 2026-06-27 03:30:13, DEBUG: hour=3 minute=30
+2026-06-27 15:00:13, DEBUG: hour=15 minute=0
+2026-06-27 15:30:13, DEBUG: hour=15 minute=30
+2026-06-27 15:52:57, DEBUG: hour=15 minute=52

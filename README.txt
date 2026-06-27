@@ -23,7 +23,7 @@ HARDWARE
 - ADS1115 — 16-bit 4-channel analog to digital converter (I2C 0x48)
 - INA219 — battery/solar current and voltage monitor (I2C 0x40)
 - Raspberry Pi Camera Rev 1.3 (CSI ribbon)
-- Waveshare Solar Power Manager (D) with 3x 18650 Li-ion cells
+- Waveshare Solar Power Manager (D) with 4x 18650 Li-ion cells
 - Waveshare 6V 5W solar panel
 
 ================================================================================

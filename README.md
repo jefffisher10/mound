@@ -29,7 +29,7 @@ Data is published automatically to [yesteryearforever.xyz/mound](https://yestery
 | Raspberry Pi Camera Rev 1.3 | Photography | CSI ribbon |
 | Waveshare Solar Power Manager (D) | Power management | — |
 | Waveshare 6V 5W solar panel | Solar charging | — |
-| 3x 18650 Li-ion cells | Battery storage | — |
+| 4x 18650 Li-ion cells | Battery storage | — |
 
 ---
 
