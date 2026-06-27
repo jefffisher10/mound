@@ -423,3 +423,24 @@
 2026-06-26 18:00:13, DEBUG: hour=18 minute=0
 2026-06-26 18:30:12, DEBUG: hour=18 minute=30
 2026-06-26 19:00:13, DEBUG: hour=19 minute=0
+2026-06-26 19:30:13, DEBUG: hour=19 minute=30
+2026-06-26 19:30:21, ERROR: SCP failed
+2026-06-26 20:00:13, DEBUG: hour=20 minute=0
+2026-06-26 20:30:13, DEBUG: hour=20 minute=30
+2026-06-26 21:00:13, DEBUG: hour=21 minute=0
+2026-06-26 21:30:13, DEBUG: hour=21 minute=30
+2026-06-26 22:00:13, DEBUG: hour=22 minute=0
+2026-06-26 22:30:12, DEBUG: hour=22 minute=30
+2026-06-26 23:00:13, DEBUG: hour=23 minute=0
+2026-06-26 23:30:13, DEBUG: hour=23 minute=30
+2026-06-26 23:30:13, DEBUG: archive block firing
+2026-06-26 23:30:13, DEBUG: archive copied ok
+2026-06-26 23:30:23, DEBUG: archive SCP returned 0
+2026-06-27 00:00:13, DEBUG: hour=0 minute=0
+2026-06-27 00:30:13, DEBUG: hour=0 minute=30
+2026-06-27 01:00:13, DEBUG: hour=1 minute=0
+2026-06-27 01:30:13, DEBUG: hour=1 minute=30
+2026-06-27 02:00:12, DEBUG: hour=2 minute=0
+2026-06-27 02:30:13, DEBUG: hour=2 minute=30
+2026-06-27 03:00:12, DEBUG: hour=3 minute=0
+2026-06-27 03:30:13, DEBUG: hour=3 minute=30
