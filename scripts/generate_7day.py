@@ -136,13 +136,13 @@ with open(gp_file, 'w') as f:
 subprocess.run(['gnuplot', gp_file])
 print("7 day graph generated!")
 
-# -- SCP to botpi -----------------------------------------
+# -- SCP to ramblinray -----------------------------------------
 scp = subprocess.run([
     'scp', sevenday_out,
-    'botpi@192.168.1.33:/var/www/html/mound/graphs/7day.png'
+    'ramblinray@192.168.1.33:/var/www/html/mound/graphs/7day.png'
 ])
 if scp.returncode == 0:
-    print("7 day graph uploaded to botpi!")
+    print("7 day graph uploaded to yesteryearforever!")
 else:
     with open(error_path, 'a') as f:
         f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, ERROR: 7day SCP failed\n")

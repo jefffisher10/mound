@@ -15,7 +15,7 @@ noon_jpg   = f'/home/ramblinray/mound/images/noon/{today}.jpg'
 
 os.makedirs('/home/ramblinray/mound/images/noon', exist_ok=True)
 
-BOTPI        = 'botpi@192.168.1.33'
+BOTPI        = 'ramblinray@192.168.1.33'
 BOTPI_IMAGES = '/var/www/html/mound/images'
 
 # -- Stamp timestamp onto image ---------------------------
@@ -45,7 +45,7 @@ def capture(path, width, height):
     ], capture_output=True)
     return result.returncode == 0
 
-# -- SCP to botpi -----------------------------------------
+# -- SCP to ramblinray -----------------------------------------
 def ship(local_path, remote_path):
     result = subprocess.run([
         'scp', local_path,

@@ -144,12 +144,12 @@ with open(gp_file, 'w') as f:
 subprocess.run(['gnuplot', gp_file])
 print(f"Graph saved to {output_file}")
 
-# -- SCP to botpi -----------------------------------------
+# -- SCP to ramblinray -----------------------------------------
 scp = subprocess.run([
     'scp', output_file,
-    f'botpi@192.168.1.33:/var/www/html/mound/graphs/archive/{target_date}.png'
+    f'ramblinray@192.168.1.33:/var/www/html/mound/graphs/archive/{target_date}.png'
 ])
 if scp.returncode == 0:
-    print(f"Uploaded to botpi!")
+    print(f"Uploaded to yesteryearforever!")
 else:
     print(f"SCP failed!")

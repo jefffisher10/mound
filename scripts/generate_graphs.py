@@ -139,17 +139,6 @@ print("Today's graph generated!")
 hour = datetime.now().hour
 minute = datetime.now().minute
 if hour == 0 and minute < 31:
-    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    archive_path = f'/home/ramblinray/mound/graphs/archive/{yesterday}.png'
-    if os.path.exists(graph_out):
-        subprocess.run(['cp', graph_out, archive_path])
-        print(f"Archived yesterday's graph as {yesterday}.png")
-    subprocess.run([
-        'scp', archive_path,
-        f'botpi@192.168.1.33:/var/www/html/mound/graphs/archive/{yesterday}.png'
-    ])
-    print("Archive uploaded to botpi!")
-
     sevenday_clean = '/tmp/mound_7day.txt'
     sevenday_out = '/home/ramblinray/mound/graphs/7day.png'
     seven_days_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
@@ -186,6 +175,6 @@ if hour == 0 and minute < 31:
 
     subprocess.run([
         'scp', sevenday_out,
-        'botpi@192.168.1.33:/var/www/html/mound/graphs/7day.png'
+        'ramblinray@192.168.1.33:/var/www/html/mound/graphs/7day.png'
     ])
     print("7 day graph uploaded!")
