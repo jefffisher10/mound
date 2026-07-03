@@ -7,7 +7,7 @@ set xdata time
 set timefmt '%Y-%m-%dT%H:%M:%S'
 set format x '%H:%M'
 set xtics rotate by -45 font ',9'
-set xrange ['2026-06-30T00:00:00':'2026-06-30T23:59:59']
+set xrange ['2026-07-03T00:00:00':'2026-07-03T23:59:59']
 
 set grid lc rgb '#e0e0e0' lw 1
 set border lc rgb '#999999'
@@ -17,38 +17,38 @@ set style line 2 lc rgb '#c0392b' lw 1.5
 set style line 3 lc rgb '#27ae60' lw 1.5
 
 set multiplot layout 6,1 \
-    title 'MOUND -- 2026-06-30' font ',13' \
+    title 'MOUND -- 2026-07-03' font ',13' \
     margins 0.12, 0.97, 0.05, 0.95 \
     spacing 0,0.02
 
 set ylabel 'Air Temp (F)' font ',9' textcolor rgb '#555555'
-set yrange [78.9:95.5]
+set yrange [90.4:101.1]
 set ytics font ',9'
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $2 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:2 with lines ls 1 notitle
 
 set ylabel 'Humidity (%)' font ',9' textcolor rgb '#555555'
-set yrange [49.4:86.8]
+set yrange [37.9:65.7]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $3 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:3 with lines ls 1 notitle
 
 set ylabel 'Pressure (hPa)' font ',9' textcolor rgb '#555555'
-set yrange [990.9:993.3]
+set yrange [990.5:994.1]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $4 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:4 with lines ls 1 notitle
 
 set ylabel 'Light (lux)' font ',9' textcolor rgb '#555555'
-set yrange [0:42321.6]
+set yrange [0:34603.7]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $5 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:($5 >= 99999 ? 1/0 : ($5 < 0 ? 0 : $5)) with lines ls 1 notitle
 
 set ylabel 'Soil Temp (F)' font ',9' textcolor rgb '#555555'
-set yrange [76.7:80.0]
+set yrange [77.9:89.1]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $6 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:6 with lines ls 2 notitle
 
 set ylabel 'Soil Moisture' font ',9' textcolor rgb '#555555'
-set yrange [13002.9:13652.1]
+set yrange [15944.6:16609.4]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $7 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:7 with lines ls 3 notitle
 
