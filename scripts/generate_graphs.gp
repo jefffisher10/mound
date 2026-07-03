@@ -33,7 +33,7 @@ plot '/tmp/mound_clean.txt' using 1:($8==1 ? $3 : 1/0) with impulses lc rgb '#4a
      '/tmp/mound_clean.txt' using 1:3 with lines ls 1 notitle
 
 set ylabel 'Pressure (hPa)' font ',9' textcolor rgb '#555555'
-set yrange [990.5:994.1]
+set yrange [989.8:994.2]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $4 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:4 with lines ls 1 notitle
 
@@ -48,7 +48,7 @@ plot '/tmp/mound_clean.txt' using 1:($8==1 ? $6 : 1/0) with impulses lc rgb '#4a
      '/tmp/mound_clean.txt' using 1:6 with lines ls 2 notitle
 
 set ylabel 'Soil Moisture' font ',9' textcolor rgb '#555555'
-set yrange [15944.6:16609.4]
+set yrange [15943.1:16625.9]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $7 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:7 with lines ls 3 notitle
 
