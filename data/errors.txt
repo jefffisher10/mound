@@ -707,3 +707,286 @@
 2026-07-06 10:00:13, DEBUG: hour=10 minute=0
 2026-07-06 10:30:13, DEBUG: hour=10 minute=30
 2026-07-06 10:32:35, DEBUG: hour=10 minute=32
+2026-07-06 11:30:13, DEBUG: hour=11 minute=30
+2026-07-06 12:00:13, DEBUG: hour=12 minute=0
+2026-07-06 12:30:13, DEBUG: hour=12 minute=30
+2026-07-06 13:00:12, DEBUG: hour=13 minute=0
+2026-07-06 13:30:13, DEBUG: hour=13 minute=30
+2026-07-06 14:00:13, DEBUG: hour=14 minute=0
+2026-07-06 14:30:13, DEBUG: hour=14 minute=30
+2026-07-06 15:00:12, DEBUG: hour=15 minute=0
+2026-07-06 15:30:13, DEBUG: hour=15 minute=30
+2026-07-06 16:00:13, DEBUG: hour=16 minute=0
+2026-07-06 16:30:12, DEBUG: hour=16 minute=30
+2026-07-06 17:00:13, DEBUG: hour=17 minute=0
+2026-07-06 17:30:13, DEBUG: hour=17 minute=30
+2026-07-06 18:00:13, DEBUG: hour=18 minute=0
+2026-07-06 18:30:13, DEBUG: hour=18 minute=30
+2026-07-06 19:00:13, DEBUG: hour=19 minute=0
+2026-07-06 20:00:12, DEBUG: hour=20 minute=0
+2026-07-06 20:30:13, DEBUG: hour=20 minute=30
+2026-07-06 21:00:13, DEBUG: hour=21 minute=0
+2026-07-06 21:30:13, DEBUG: hour=21 minute=30
+2026-07-06 22:00:12, DEBUG: hour=22 minute=0
+2026-07-06 22:30:12, DEBUG: hour=22 minute=30
+2026-07-06 23:00:13, DEBUG: hour=23 minute=0
+2026-07-06 23:30:13, DEBUG: hour=23 minute=30
+2026-07-06 23:30:13, DEBUG: archive block firing
+2026-07-06 23:30:13, DEBUG: archive copied ok
+2026-07-06 23:30:23, DEBUG: archive SCP returned 0
+2026-07-07 00:00:13, DEBUG: hour=0 minute=0
+2026-07-07 00:30:13, DEBUG: hour=0 minute=30
+2026-07-07 01:00:12, DEBUG: hour=1 minute=0
+2026-07-07 01:30:13, DEBUG: hour=1 minute=30
+2026-07-07 02:00:13, DEBUG: hour=2 minute=0
+2026-07-07 02:30:13, DEBUG: hour=2 minute=30
+2026-07-07 02:30:56, ERROR: SCP failed
+2026-07-07 03:00:13, DEBUG: hour=3 minute=0
+2026-07-07 03:30:13, DEBUG: hour=3 minute=30
+2026-07-07 04:00:12, DEBUG: hour=4 minute=0
+2026-07-07 04:30:13, DEBUG: hour=4 minute=30
+2026-07-07 05:00:13, DEBUG: hour=5 minute=0
+2026-07-07 05:30:13, DEBUG: hour=5 minute=30
+2026-07-07 06:00:13, DEBUG: hour=6 minute=0
+2026-07-07 06:30:13, DEBUG: hour=6 minute=30
+2026-07-07 07:00:13, DEBUG: hour=7 minute=0
+2026-07-07 07:30:13, DEBUG: hour=7 minute=30
+2026-07-07 08:00:13, DEBUG: hour=8 minute=0
+2026-07-07 08:30:12, DEBUG: hour=8 minute=30
+2026-07-07 09:00:13, DEBUG: hour=9 minute=0
+2026-07-07 09:30:13, DEBUG: hour=9 minute=30
+2026-07-07 10:00:13, DEBUG: hour=10 minute=0
+2026-07-07 10:30:13, DEBUG: hour=10 minute=30
+2026-07-07 11:00:04, ERROR BME280: Failed to find BME280! Chip ID 0x0
+2026-07-07 11:00:04, ERROR TSL2591: Failed to find TSL2591, check wiring!
+2026-07-07 11:00:13, DEBUG: hour=11 minute=0
+2026-07-07 11:30:05, ERROR BME280: Failed to find BME280! Chip ID 0x0
+2026-07-07 11:30:05, ERROR TSL2591: Failed to find TSL2591, check wiring!
+2026-07-07 11:30:13, DEBUG: hour=11 minute=30
+2026-07-07 11:00:04, ERROR ADS1115: [Errno 5] Input/output error
+2026-07-07 12:00:03, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 12:00:12, DEBUG: hour=12 minute=0
+2026-07-07 12:30:03, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 12:30:12, DEBUG: hour=12 minute=30
+2026-07-07 13:00:03, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 13:00:12, DEBUG: hour=13 minute=0
+2026-07-07 13:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 13:30:13, DEBUG: hour=13 minute=30
+2026-07-07 14:00:03, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 14:00:12, DEBUG: hour=14 minute=0
+2026-07-07 14:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 14:30:13, DEBUG: hour=14 minute=30
+2026-07-07 15:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 15:00:13, DEBUG: hour=15 minute=0
+2026-07-07 15:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 15:30:13, DEBUG: hour=15 minute=30
+2026-07-07 16:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 16:00:13, DEBUG: hour=16 minute=0
+2026-07-07 16:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 16:30:13, DEBUG: hour=16 minute=30
+2026-07-07 17:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 17:00:13, DEBUG: hour=17 minute=0
+2026-07-07 17:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 17:30:13, DEBUG: hour=17 minute=30
+2026-07-07 18:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 18:00:13, DEBUG: hour=18 minute=0
+2026-07-07 18:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 18:30:13, DEBUG: hour=18 minute=30
+2026-07-07 19:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 19:00:13, DEBUG: hour=19 minute=0
+2026-07-07 19:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 19:30:13, DEBUG: hour=19 minute=30
+2026-07-07 20:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 20:00:13, DEBUG: hour=20 minute=0
+2026-07-07 20:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 20:30:13, DEBUG: hour=20 minute=30
+2026-07-07 21:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 21:00:13, DEBUG: hour=21 minute=0
+2026-07-07 21:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 21:30:13, DEBUG: hour=21 minute=30
+2026-07-07 22:00:03, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 22:00:12, DEBUG: hour=22 minute=0
+2026-07-07 22:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 22:30:13, DEBUG: hour=22 minute=30
+2026-07-07 23:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 23:00:13, DEBUG: hour=23 minute=0
+2026-07-07 23:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-07 23:30:13, DEBUG: hour=23 minute=30
+2026-07-07 23:30:13, DEBUG: archive block firing
+2026-07-07 23:30:13, DEBUG: archive copied ok
+2026-07-07 23:30:23, DEBUG: archive SCP returned 0
+2026-07-08 00:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 00:00:13, DEBUG: hour=0 minute=0
+2026-07-08 00:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 00:30:13, DEBUG: hour=0 minute=30
+2026-07-08 01:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 01:00:13, DEBUG: hour=1 minute=0
+2026-07-08 01:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 01:30:13, DEBUG: hour=1 minute=30
+2026-07-08 02:00:03, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 02:00:12, DEBUG: hour=2 minute=0
+2026-07-08 02:30:03, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 02:30:12, DEBUG: hour=2 minute=30
+2026-07-08 03:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 03:00:13, DEBUG: hour=3 minute=0
+2026-07-08 03:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 03:30:13, DEBUG: hour=3 minute=30
+2026-07-08 04:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 04:00:13, DEBUG: hour=4 minute=0
+2026-07-08 04:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 04:30:13, DEBUG: hour=4 minute=30
+2026-07-08 05:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 05:00:13, DEBUG: hour=5 minute=0
+2026-07-08 05:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 05:30:13, DEBUG: hour=5 minute=30
+2026-07-08 06:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 06:00:13, DEBUG: hour=6 minute=0
+2026-07-08 06:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 06:30:13, DEBUG: hour=6 minute=30
+2026-07-08 07:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 07:00:13, DEBUG: hour=7 minute=0
+2026-07-08 07:30:03, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 07:30:12, DEBUG: hour=7 minute=30
+2026-07-08 08:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 08:00:13, DEBUG: hour=8 minute=0
+2026-07-08 08:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 08:30:13, DEBUG: hour=8 minute=30
+2026-07-08 09:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 09:00:13, DEBUG: hour=9 minute=0
+2026-07-08 09:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 09:30:13, DEBUG: hour=9 minute=30
+2026-07-08 10:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 10:00:13, DEBUG: hour=10 minute=0
+2026-07-08 10:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 10:30:13, DEBUG: hour=10 minute=30
+2026-07-08 11:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 11:00:13, DEBUG: hour=11 minute=0
+2026-07-08 11:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 11:30:13, DEBUG: hour=11 minute=30
+2026-07-08 12:00:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 12:00:13, DEBUG: hour=12 minute=0
+2026-07-08 12:30:04, ERROR BME280: No I2C device at address: 0x76
+2026-07-08 12:30:13, DEBUG: hour=12 minute=30
+2026-07-08 13:30:13, DEBUG: hour=13 minute=30
+2026-07-08 14:00:12, DEBUG: hour=14 minute=0
+2026-07-08 14:30:12, DEBUG: hour=14 minute=30
+2026-07-08 15:00:13, DEBUG: hour=15 minute=0
+2026-07-08 15:30:13, DEBUG: hour=15 minute=30
+2026-07-08 16:00:13, DEBUG: hour=16 minute=0
+2026-07-08 16:30:13, DEBUG: hour=16 minute=30
+2026-07-08 17:00:13, DEBUG: hour=17 minute=0
+2026-07-08 17:30:13, DEBUG: hour=17 minute=30
+2026-07-08 18:00:12, DEBUG: hour=18 minute=0
+2026-07-08 18:30:12, DEBUG: hour=18 minute=30
+2026-07-08 19:00:13, DEBUG: hour=19 minute=0
+2026-07-08 19:30:13, DEBUG: hour=19 minute=30
+2026-07-08 20:00:13, DEBUG: hour=20 minute=0
+2026-07-08 20:30:13, DEBUG: hour=20 minute=30
+2026-07-08 21:00:13, DEBUG: hour=21 minute=0
+2026-07-09 10:30:12, DEBUG: hour=10 minute=30
+2026-07-09 11:00:12, DEBUG: hour=11 minute=0
+2026-07-09 11:30:12, DEBUG: hour=11 minute=30
+2026-07-09 12:00:13, DEBUG: hour=12 minute=0
+2026-07-09 12:30:13, DEBUG: hour=12 minute=30
+2026-07-09 13:00:13, DEBUG: hour=13 minute=0
+2026-07-09 13:30:13, DEBUG: hour=13 minute=30
+2026-07-09 14:00:12, DEBUG: hour=14 minute=0
+2026-07-09 14:30:12, DEBUG: hour=14 minute=30
+2026-07-09 15:00:13, DEBUG: hour=15 minute=0
+2026-07-09 15:30:13, DEBUG: hour=15 minute=30
+2026-07-09 16:00:13, DEBUG: hour=16 minute=0
+2026-07-09 16:30:12, DEBUG: hour=16 minute=30
+2026-07-09 17:00:13, DEBUG: hour=17 minute=0
+2026-07-09 17:30:13, DEBUG: hour=17 minute=30
+2026-07-09 18:00:12, DEBUG: hour=18 minute=0
+2026-07-09 18:30:12, DEBUG: hour=18 minute=30
+2026-07-09 19:00:13, DEBUG: hour=19 minute=0
+2026-07-09 19:30:13, DEBUG: hour=19 minute=30
+2026-07-09 20:00:13, DEBUG: hour=20 minute=0
+2026-07-10 12:00:13, DEBUG: hour=12 minute=0
+2026-07-10 12:30:13, DEBUG: hour=12 minute=30
+2026-07-10 13:00:13, DEBUG: hour=13 minute=0
+2026-07-10 13:30:13, DEBUG: hour=13 minute=30
+2026-07-10 14:00:13, DEBUG: hour=14 minute=0
+2026-07-10 14:30:13, DEBUG: hour=14 minute=30
+2026-07-10 15:00:12, DEBUG: hour=15 minute=0
+2026-07-10 15:30:12, DEBUG: hour=15 minute=30
+2026-07-10 16:00:13, DEBUG: hour=16 minute=0
+2026-07-10 16:30:13, DEBUG: hour=16 minute=30
+2026-07-10 17:00:12, DEBUG: hour=17 minute=0
+2026-07-10 17:30:12, DEBUG: hour=17 minute=30
+2026-07-10 18:00:12, DEBUG: hour=18 minute=0
+2026-07-10 18:30:13, DEBUG: hour=18 minute=30
+2026-07-10 19:00:13, DEBUG: hour=19 minute=0
+2026-07-11 10:30:13, DEBUG: hour=10 minute=30
+2026-07-11 11:00:13, DEBUG: hour=11 minute=0
+2026-07-11 11:30:13, DEBUG: hour=11 minute=30
+2026-07-11 12:00:12, DEBUG: hour=12 minute=0
+2026-07-11 12:30:13, DEBUG: hour=12 minute=30
+2026-07-11 13:00:12, DEBUG: hour=13 minute=0
+2026-07-11 13:30:12, DEBUG: hour=13 minute=30
+2026-07-11 19:00:12, DEBUG: hour=19 minute=0
+2026-07-11 19:30:13, DEBUG: hour=19 minute=30
+2026-07-11 20:00:13, DEBUG: hour=20 minute=0
+2026-07-11 20:30:13, DEBUG: hour=20 minute=30
+2026-07-11 21:00:13, DEBUG: hour=21 minute=0
+2026-07-11 21:30:13, DEBUG: hour=21 minute=30
+2026-07-12 10:00:13, DEBUG: hour=10 minute=0
+2026-07-12 10:30:13, DEBUG: hour=10 minute=30
+2026-07-12 11:00:12, DEBUG: hour=11 minute=0
+2026-07-12 11:30:13, DEBUG: hour=11 minute=30
+2026-07-12 12:00:13, DEBUG: hour=12 minute=0
+2026-07-12 13:00:12, DEBUG: hour=13 minute=0
+2026-07-12 13:30:13, DEBUG: hour=13 minute=30
+2026-07-12 14:00:13, DEBUG: hour=14 minute=0
+2026-07-12 14:30:12, DEBUG: hour=14 minute=30
+2026-07-12 15:00:12, DEBUG: hour=15 minute=0
+2026-07-12 15:30:13, DEBUG: hour=15 minute=30
+2026-07-12 16:00:13, DEBUG: hour=16 minute=0
+2026-07-12 16:30:13, DEBUG: hour=16 minute=30
+2026-07-12 16:39:00, DEBUG: hour=16 minute=39
+2026-07-13 09:10:14, DEBUG: hour=9 minute=10
+2026-07-13 09:30:13, DEBUG: hour=9 minute=30
+2026-07-13 10:00:13, DEBUG: hour=10 minute=0
+2026-07-13 10:30:13, DEBUG: hour=10 minute=30
+2026-07-13 11:00:12, DEBUG: hour=11 minute=0
+2026-07-13 12:30:13, DEBUG: hour=12 minute=30
+2026-07-13 13:00:13, DEBUG: hour=13 minute=0
+2026-07-13 13:30:12, DEBUG: hour=13 minute=30
+2026-07-13 14:00:13, DEBUG: hour=14 minute=0
+2026-07-13 14:30:13, DEBUG: hour=14 minute=30
+2026-07-13 15:00:13, DEBUG: hour=15 minute=0
+2026-07-13 15:30:13, DEBUG: hour=15 minute=30
+2026-07-13 16:00:13, DEBUG: hour=16 minute=0
+2026-07-13 16:30:13, DEBUG: hour=16 minute=30
+2026-07-13 17:00:12, DEBUG: hour=17 minute=0
+2026-07-13 17:30:12, DEBUG: hour=17 minute=30
+2026-07-13 18:00:13, DEBUG: hour=18 minute=0
+2026-07-13 18:30:13, DEBUG: hour=18 minute=30
+2026-07-13 19:00:13, DEBUG: hour=19 minute=0
+2026-07-13 19:30:13, DEBUG: hour=19 minute=30
+2026-07-13 20:00:12, DEBUG: hour=20 minute=0
+2026-07-14 10:00:13, DEBUG: hour=10 minute=0
+2026-07-14 10:30:13, DEBUG: hour=10 minute=30
+2026-07-14 11:00:12, DEBUG: hour=11 minute=0
+2026-07-14 11:30:12, DEBUG: hour=11 minute=30
+2026-07-14 12:00:13, DEBUG: hour=12 minute=0
+2026-07-14 12:30:12, DEBUG: hour=12 minute=30
+2026-07-14 13:30:13, DEBUG: hour=13 minute=30
+2026-07-14 14:00:13, DEBUG: hour=14 minute=0
+2026-07-14 15:00:13, DEBUG: hour=15 minute=0
+2026-07-14 15:30:13, DEBUG: hour=15 minute=30
+2026-07-14 16:00:13, DEBUG: hour=16 minute=0
+2026-07-14 16:30:13, DEBUG: hour=16 minute=30
+2026-07-14 19:00:13, DEBUG: hour=19 minute=0
+2026-07-14 19:30:13, DEBUG: hour=19 minute=30
+2026-07-14 20:00:13, DEBUG: hour=20 minute=0
+2026-07-14 20:30:13, DEBUG: hour=20 minute=30
+2026-07-14 21:00:13, DEBUG: hour=21 minute=0
+2026-07-14 21:30:13, DEBUG: hour=21 minute=30
+2026-07-14 22:00:12, DEBUG: hour=22 minute=0
+2026-07-14 22:30:12, DEBUG: hour=22 minute=30
+2026-07-15 10:00:13, DEBUG: hour=10 minute=0
+2026-07-15 10:30:12, DEBUG: hour=10 minute=30
+2026-07-15 11:00:13, DEBUG: hour=11 minute=0
+2026-07-15 11:19:54, DEBUG: hour=11 minute=19
