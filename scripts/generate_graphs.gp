@@ -24,33 +24,33 @@ set multiplot layout 8,1 \
     spacing 0,0.02
 
 set ylabel 'Air Temp (F)' font ',9' textcolor rgb '#555555'
-set yrange [70.6:108.2]
+set yrange [70.4:110.5]
 set ytics font ',9'
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $2 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:2 with lines ls 1 notitle
 
 set ylabel 'Humidity (%)' font ',9' textcolor rgb '#555555'
-set yrange [33.7:74.2]
+set yrange [31.6:74.4]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $3 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:3 with lines ls 1 notitle
 
 set ylabel 'Pressure (hPa)' font ',9' textcolor rgb '#555555'
-set yrange [989.6:991.9]
+set yrange [988.0:992.0]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $4 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:4 with lines ls 1 notitle
 
 set ylabel 'Light (lux)' font ',9' textcolor rgb '#555555'
-set yrange [0:2335.5]
+set yrange [0:3068.1]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $5 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:($5 >= 99999 ? 1/0 : ($5 < 0 ? 0 : $5)) with lines ls 1 notitle
 
 set ylabel 'Soil Temp (F)' font ',9' textcolor rgb '#555555'
-set yrange [74.9:94.4]
+set yrange [74.8:95.1]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $6 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:6 with lines ls 2 notitle
 
 set ylabel 'Soil Moisture' font ',9' textcolor rgb '#555555'
-set yrange [-657.4:8443.4]
+set yrange [-763.0:8453.0]
 plot '/tmp/mound_clean.txt' using 1:($8==1 ? $7 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:7 with lines ls 3 notitle
 
@@ -60,7 +60,7 @@ plot '/tmp/mound_clean.txt' using 1:($8==1 ? $9 : 1/0) with impulses lc rgb '#4a
      '/tmp/mound_clean.txt' using 1:9 with lines ls 4 notitle
 
 set ylabel 'Battery Current (mA)' font ',9' textcolor rgb '#555555'
-set yrange [-1524.4:250.5]
+set yrange [-1525.5:262.7]
 plot 0 with lines lc rgb '#cccccc' lw 1 notitle, \
      '/tmp/mound_clean.txt' using 1:($8==1 ? $10 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \
      '/tmp/mound_clean.txt' using 1:10 with lines ls 5 notitle
