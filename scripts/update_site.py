@@ -57,8 +57,8 @@ subprocess.run(['python', '/home/ramblinray/mound/scripts/generate_page.py'])
 
 page_scp = subprocess.run([
     'scp',
-    '/home/ramblinray/mound/page/data_archive.html',
-    'ramblinray@192.168.1.33:/var/www/html/mound/data_archive.html'
+    '/home/ramblinray/mound/page/data_live.html',
+    'ramblinray@192.168.1.33:/var/www/html/mound/data_live.html'
 ])
 if page_scp.returncode == 0:
     print("Page uploaded to ramblinray!")

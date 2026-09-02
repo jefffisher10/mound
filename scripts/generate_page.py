@@ -5,7 +5,7 @@ from datetime import datetime
 month = datetime.now().strftime('%Y-%m')
 today = datetime.now().strftime('%Y-%m-%d')
 data_file = f'/home/ramblinray/mound/data/{month}.txt'
-output_file = '/home/ramblinray/mound/page/data_archive.html'
+output_file = '/home/ramblinray/mound/page/data_live.html'
 json_path = '/home/ramblinray/mound/data/latest.json'
 archive_page_dir = '/home/ramblinray/mound/page/archive'
 os.makedirs('/home/ramblinray/mound/page', exist_ok=True)
@@ -126,7 +126,7 @@ except:
 
 # Archive pages live two directories below site root (mound/archive/),
 # so stylesheet, script, and nav links all need ../../ instead of the
-# single ../ that mound/data_archive.html uses.
+# single ../ that mound/data_live.html uses.
 archive_topnav = """
   <nav id="topnav">
     <div id="topnav-inner">
@@ -145,7 +145,7 @@ archive_topnav = """
   </nav>
 """
 
-# -- archive/index.html: list of months --------------------
+# -- archive/data_archive.html: list of months --------------
 month_links = ''
 for ym in sorted(months.keys(), reverse=True):
     y, m = ym.split('-')
@@ -171,7 +171,7 @@ archive_index_html = f"""<!DOCTYPE html>
     <h1><a href="../../index.html">| yesteryear forever |</a></h1>
     <blockquote>
       <p><strong>MOUND -- Archive</strong></p>
-      <p><a href="../data_archive.html">&larr; back to live data</a></p>
+      <p><a href="../data_live.html">&larr; back to live data</a></p>
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
       <p><strong>Browse by month</strong></p>
       <ul style="list-style:none; padding:0;">
@@ -186,7 +186,7 @@ archive_index_html = f"""<!DOCTYPE html>
 </body>
 </html>"""
 
-with open(f'{archive_page_dir}/index.html', 'w') as f:
+with open(f'{archive_page_dir}/data_archive.html', 'w') as f:
     f.write(archive_index_html)
 
 # -- archive/YYYY-MM.html: one per month, daily links -------
@@ -212,7 +212,7 @@ for ym, dates in months.items():
     <h1><a href="../../index.html">| yesteryear forever |</a></h1>
     <blockquote>
       <p><strong>MOUND -- {label}</strong></p>
-      <p><a href="index.html">&larr; back to archive</a> &nbsp;·&nbsp; <a href="../data_archive.html">back to live data</a></p>
+      <p><a href="data_archive.html">&larr; back to archive</a> &nbsp;·&nbsp; <a href="../data_live.html">back to live data</a></p>
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
       <ul style="list-style:none; padding:0;">
 {day_links}
@@ -318,7 +318,7 @@ html = f"""<!DOCTYPE html>
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
 
       <p><strong>Archive</strong></p>
-      <p><a href="archive/index.html">Browse the full daily archive by month &rarr;</a></p>
+      <p><a href="archive/data_archive.html">Browse the full daily archive by month &rarr;</a></p>
 
     </blockquote>
 
