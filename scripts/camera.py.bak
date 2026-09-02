@@ -11,13 +11,12 @@ minute = datetime.now().minute
 timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
 
 error_path = '/home/ramblinray/mound/data/errors.txt'
-live_jpg   = '/home/ramblinray/mound/images/live.jpg'
 noon_jpg   = f'/home/ramblinray/mound/images/noon/{today}.jpg'
 
 os.makedirs('/home/ramblinray/mound/images/noon', exist_ok=True)
 
-RAMBLINRAY        = 'ramblinray@192.168.1.33'
-RAMBLINRAY_IMAGES = '/var/www/html/mound/images'
+BOTPI        = 'ramblinray@192.168.1.33'
+BOTPI_IMAGES = '/var/www/html/mound/images'
 
 # -- Stamp timestamp onto image ---------------------------
 def stamp(path, label=None):
@@ -46,11 +45,11 @@ def capture(path, width, height):
     ], capture_output=True)
     return result.returncode == 0
 
-# -- SCP to ramblinray -------------------------------------
+# -- SCP to ramblinray -----------------------------------------
 def ship(local_path, remote_path):
     result = subprocess.run([
         'scp', local_path,
-        f'{RAMBLINRAY}:{remote_path}'
+        f'{BOTPI}:{remote_path}'
     ], capture_output=True)
     if result.returncode != 0:
         with open(error_path, 'a') as f:
@@ -58,23 +57,16 @@ def ship(local_path, remote_path):
         return False
     return True
 
-# -- Every-run capture: overwrite the live/latest shot -----
-if capture(live_jpg, 1296, 972):
-    stamp(live_jpg)
-    ship(live_jpg, f'{RAMBLINRAY_IMAGES}/latest.jpg')
-    print("Live shot captured and uploaded!")
-
-    # -- Noon keeper: permanent, once per day, reuse this capture --
-    if hour == 12 and minute >= 30 and not os.path.exists(noon_jpg):
-        try:
-            subprocess.run(['cp', live_jpg, noon_jpg])
-            ship(noon_jpg, f'{RAMBLINRAY_IMAGES}/noon/{today}.jpg')
-            print("Noon keeper archived and uploaded!")
-        except Exception as e:
+# -- Noon keeper only -------------------------------------
+if hour == 12 and minute >= 30:
+    if not os.path.exists(noon_jpg):
+        if capture(noon_jpg, 1296, 972):
+            stamp(noon_jpg, 'noon')
+            ship(noon_jpg, f'{BOTPI_IMAGES}/noon/{today}.jpg')
+            ship(noon_jpg, f'{BOTPI_IMAGES}/latest.jpg')
+            print("Noon keeper captured and uploaded!")
+        else:
             with open(error_path, 'a') as f:
-                f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, ERROR noon keeper: {e}\n")
-else:
-    with open(error_path, 'a') as f:
-        f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, ERROR camera: failed to capture\n")
+                f.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, ERROR camera: failed to capture noon\n")
 
 print("Camera script complete.")

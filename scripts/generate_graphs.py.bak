@@ -58,8 +58,6 @@ def make_gp(clean_file, output_file, title, xstart, xend, xfmt='%H:%M'):
     l_min,  l_max  = get_range(clean_file, 4, exclude_val=99999.0)
     st_min, st_max = get_range(clean_file, 5)
     sm_min, sm_max = get_range(clean_file, 6)
-    v_min,  v_max  = get_range(clean_file, 8)
-    c_min,  c_max  = get_range(clean_file, 9)
 
     # Fallbacks if no data
     t_min  = t_min  or 50;  t_max  = t_max  or 90
@@ -68,11 +66,9 @@ def make_gp(clean_file, output_file, title, xstart, xend, xfmt='%H:%M'):
     l_min  = 0;             l_max  = l_max  or 10000
     st_min = st_min or 50;  st_max = st_max or 90
     sm_min = sm_min or 10000; sm_max = sm_max or 25000
-    v_min  = v_min  or 11;  v_max  = v_max  or 15
-    c_min  = c_min  or -500; c_max = c_max or 200
 
     return f"""
-set terminal png size 1000,1550 background '#ffffff'
+set terminal png size 1000,1200 background '#ffffff'
 set output '{output_file}'
 
 set datafile separator ','
@@ -88,12 +84,10 @@ set tics textcolor rgb '#555555'
 set style line 1 lc rgb '#2C3E50' lw 1.5
 set style line 2 lc rgb '#c0392b' lw 1.5
 set style line 3 lc rgb '#27ae60' lw 1.5
-set style line 4 lc rgb '#8e44ad' lw 1.5
-set style line 5 lc rgb '#16a085' lw 1.5
 
-set multiplot layout 8,1 \\
+set multiplot layout 6,1 \\
     title '{title}' font ',13' \\
-    margins 0.12, 0.97, 0.04, 0.96 \\
+    margins 0.12, 0.97, 0.05, 0.95 \\
     spacing 0,0.02
 
 set ylabel 'Air Temp (F)' font ',9' textcolor rgb '#555555'
@@ -127,17 +121,6 @@ set yrange [{sm_min}:{sm_max}]
 plot '{clean_file}' using 1:($8==1 ? $7 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \\
      '{clean_file}' using 1:7 with lines ls 3 notitle
 
-set ylabel 'Battery Voltage (V)' font ',9' textcolor rgb '#555555'
-set yrange [{v_min}:{v_max}]
-plot '{clean_file}' using 1:($8==1 ? $9 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \\
-     '{clean_file}' using 1:9 with lines ls 4 notitle
-
-set ylabel 'Battery Current (mA)' font ',9' textcolor rgb '#555555'
-set yrange [{c_min}:{c_max}]
-plot 0 with lines lc rgb '#cccccc' lw 1 notitle, \\
-     '{clean_file}' using 1:($8==1 ? $10 : 1/0) with impulses lc rgb '#4a9eff' lw 3 notitle, \\
-     '{clean_file}' using 1:10 with lines ls 5 notitle
-
 unset multiplot
 """
 
@@ -156,12 +139,6 @@ print("Today's graph generated!")
 hour = datetime.now().hour
 minute = datetime.now().minute
 if hour == 0 and minute < 31:
-    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    archive_path = f'/home/ramblinray/mound/graphs/archive/{yesterday}.png'
-    if os.path.exists(graph_out):
-        subprocess.run(['cp', graph_out, archive_path])
-        print(f"Archived yesterday's graph as {yesterday}.png")
-
     sevenday_clean = '/tmp/mound_7day.txt'
     sevenday_out = '/home/ramblinray/mound/graphs/7day.png'
     seven_days_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
