@@ -5,7 +5,7 @@ from datetime import datetime
 month = datetime.now().strftime('%Y-%m')
 today = datetime.now().strftime('%Y-%m-%d')
 data_file = f'/home/ramblinray/mound/data/{month}.txt'
-output_file = '/home/ramblinray/mound/page/index.html'
+output_file = '/home/ramblinray/mound/page/data_archive.html'
 json_path = '/home/ramblinray/mound/data/latest.json'
 archive_page_dir = '/home/ramblinray/mound/page/archive'
 os.makedirs('/home/ramblinray/mound/page', exist_ok=True)
@@ -126,7 +126,7 @@ except:
 
 # Archive pages live two directories below site root (mound/archive/),
 # so stylesheet, script, and nav links all need ../../ instead of the
-# single ../ that mound/index.html uses.
+# single ../ that mound/data_archive.html uses.
 archive_topnav = """
   <nav id="topnav">
     <div id="topnav-inner">
@@ -171,7 +171,7 @@ archive_index_html = f"""<!DOCTYPE html>
     <h1><a href="../../index.html">| yesteryear forever |</a></h1>
     <blockquote>
       <p><strong>MOUND -- Archive</strong></p>
-      <p><a href="../index.html">&larr; back to live data</a></p>
+      <p><a href="../data_archive.html">&larr; back to live data</a></p>
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
       <p><strong>Browse by month</strong></p>
       <ul style="list-style:none; padding:0;">
@@ -212,7 +212,7 @@ for ym, dates in months.items():
     <h1><a href="../../index.html">| yesteryear forever |</a></h1>
     <blockquote>
       <p><strong>MOUND -- {label}</strong></p>
-      <p><a href="index.html">&larr; back to archive</a> &nbsp;·&nbsp; <a href="../index.html">back to live data</a></p>
+      <p><a href="index.html">&larr; back to archive</a> &nbsp;·&nbsp; <a href="../data_archive.html">back to live data</a></p>
       <hr style="border:none; border-top: 1px solid #ccc; margin: 1rem 0;">
       <ul style="list-style:none; padding:0;">
 {day_links}
